@@ -22,7 +22,20 @@ const crearUsuario = async(usuario) => {
     return await resp.json();
 }
 
+const actualizarUsuario = async(id, usuario) => {
+    const resp = await fetch(`${urlCRUD}/${id}`, {
+        method: 'PUT', //A veces hacen peticiones post para actualizar y el backend lo gestiona, pero lo correcto es PUT
+        body: JSON.stringify(usuario),
+        headers: {
+            'Content-Type': 'application/json' //Decimos al backend que la información que mando es JSON
+        }
+    });
+    return await resp.json();
+}
+
+
 export {
     getUsuario,
-    crearUsuario
+    crearUsuario,
+    actualizarUsuario
 }
