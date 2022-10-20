@@ -10,6 +10,19 @@ const getUsuario = async(id) => {
     return data;
 }
 
+
+const crearUsuario = async(usuario) => {
+    const resp = await fetch(urlCRUD, {
+        method: 'POST',
+        body: JSON.stringify(usuario),
+        headers: {
+            'Content-Type': 'application/json' //Decimos al backend que la información que mando es JSON
+        }
+    });
+    return await resp.json();
+}
+
 export {
-    getUsuario
+    getUsuario,
+    crearUsuario
 }
